@@ -125,6 +125,7 @@
             this.SettingsButton.TabIndex = 5;
             this.SettingsButton.Text = "SETTINGS";
             this.SettingsButton.UseVisualStyleBackColor = false;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // NewsButton
             // 

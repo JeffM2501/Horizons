@@ -47,6 +47,9 @@ namespace SHLanucher
 
         internal static void WriteLicenseFile(FileInfo file, string licenseString)
         {
+            if (!file.Directory.Exists)
+                file.Directory.Create();
+
             var sr = file.AppendText();
             sr.WriteLine(licenseString);
             sr.Flush();

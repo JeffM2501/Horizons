@@ -102,5 +102,14 @@ namespace SHLanucher
         {
             OK.Enabled = ProdcutCode.Text != string.Empty;
         }
+
+        private void LicenseEntryDialog_Load(object sender, EventArgs e)
+        {
+            if (LicenseCode != string.Empty)
+            {
+                ProdcutCode.Text = LicenseCode;
+                QuitButton.Text = "Cancel";
+            }
+        }
     }
 }

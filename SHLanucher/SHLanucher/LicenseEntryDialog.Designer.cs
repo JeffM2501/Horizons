@@ -120,6 +120,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Please Enter Product Code";
+            this.Load += new System.EventHandler(this.LicenseEntryDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

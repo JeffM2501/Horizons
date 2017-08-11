@@ -15,7 +15,7 @@ namespace SHLanucher
     {
         List<Tuple<Label, ProgressBar>> ProgressBars = new List<Tuple<Label, ProgressBar>>();
 
-        DirectoryInfo GameDir = null;
+        private static DirectoryInfo GameDir = null;
 
         protected UpdateManager UpMan = null;
 
@@ -50,6 +50,7 @@ namespace SHLanucher
             UpMan.FileDownloadProgress += UpMan_FileDownloadProgress;
             UpMan.FileDownloadError += UpMan_FileDownloadError;
         }
+
 
         private void UpMan_FileDownloadError(object sender, UpdateManager.FileProgressEventArgs e)
         {
@@ -102,6 +103,8 @@ namespace SHLanucher
             PushLog("Updating Files...");
         }
 
+      
+
         private void UpMan_UpdateServerConnectFailed(object sender, EventArgs e)
         {
             PushLog("Failed To Contact Update Server; " + UpMan.GetLastError());
@@ -117,6 +120,8 @@ namespace SHLanucher
             PushLog("Contacting Update Server");
         }
 
+        private DateTime UpdateStartTime = DateTime.MinValue;
+
         private void UpMan_UpdateCanceled(object sender, EventArgs e)
         {
             PushLog("Update Canceled");
@@ -127,6 +132,7 @@ namespace SHLanucher
         private void UpMan_UpdateComplete(object sender, EventArgs e)
         {
             PushLog("Update Completed");
+            PushLog("Elapsed time :" + string.Format("{0:hh\\:mm\\:ss}",(DateTime.Now - UpdateStartTime)));
             PushLog("Valid install detected, Launch when ready");
             UpdateButton.BeginInvoke(new Action(() => UpdateButton.Enabled = true));
             LaunchButton.BeginInvoke(new Action(() => LaunchButton.Enabled = true));
@@ -142,6 +148,7 @@ namespace SHLanucher
 
         private void UpMan_UpdateStarted(object sender, EventArgs e)
         {
+            UpdateStartTime = DateTime.Now;
             PushLog("Update Started");
         }
 
@@ -185,28 +192,41 @@ namespace SHLanucher
                     InvalidLicense();
                 else
                 {
-                    FileInfo licenseFile = new FileInfo(Path.Combine(GameDir.FullName, "bin", "license.dat"));
+                    FileInfo licenseFile = new FileInfo(GetLicenseFilePath());
                     if (!licenseFile.Directory.Exists)
                         licenseFile.Directory.Create();
 
                     if (!licenseFile.Exists)
                         HorizonLicenses.WriteLicenseFile(licenseFile, HorizonLicenses.CreateLicenseString(licenseDialog.LicenseCode, "Alpha", licenseFile.FullName));
+                }
 
+                if (IsLicensed())
+                {
                     ValidateLicense();
-
+              
                     if (IsValdInstall())
                     {
                         PushLog("Valid install detected, Launch when ready");
                         LaunchButton.Enabled = true;
+                        SettingsButton.Enabled = true;
                         NewsButton_Click(sender, e);
                     }
                     else
                     {
                         PushLog("Invalid install detected, forcing update");
+                        SettingsButton.Enabled = HasSettings();
                         UpdateButton_Click(sender, e);
                     }
                 }
             }
+        }
+
+        internal static string GetProductCode()
+        {
+            string pCode = string.Empty;
+
+            HorizonLicenses.CheckForLicense("Alpha", GetLicenseFilePath(), ref pCode);
+            return pCode;
         }
 
         private bool ValidateLicense()
@@ -263,7 +283,7 @@ namespace SHLanucher
 
         protected bool IsValdInstall()
         {
-            if (GameDir == null || !GameDir.Exists)
+            if (GameDir == null || !Directory.Exists(GameDir.FullName))
                 return false;
 
             return (File.Exists(Path.Combine(GameDir.FullName, "bin", "Horizons.exe")));
@@ -271,7 +291,7 @@ namespace SHLanucher
 
         protected bool IsLicensed()
         {
-            if (GameDir == null || !GameDir.Exists)
+            if (GameDir == null || !Directory.Exists(GameDir.FullName))
                 return false;
 
             return (File.Exists(GetLicenseFilePath()));
@@ -279,15 +299,20 @@ namespace SHLanucher
 
         protected bool HasSettings()
         {
-            if (GameDir == null || !GameDir.Exists)
+            if (GameDir == null || !Directory.Exists(GameDir.FullName))
                 return false;
 
-            return (File.Exists(Path.Combine(GameDir.FullName, "game.xml")));
+            return (File.Exists(GetSettingsFilePath()));
         }
 
-        protected string GetLicenseFilePath()
+        internal static string GetLicenseFilePath()
         {
             return Path.Combine(GameDir.FullName, "bin", "license.dat");
+        }
+
+        protected string GetSettingsFilePath()
+        {
+            return Path.Combine(GameDir.FullName, "config.xml");
         }
 
         protected void PushLog(string text)
@@ -374,6 +399,21 @@ namespace SHLanucher
             LogButton.BackColor = Color.Transparent;
             NewsButton.BackColor = Color.Transparent;
             CreditsButton.BackColor = Color.Black;
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            Config cfg = Config.LoadXML(GetSettingsFilePath());
+
+            SettingsDialog dlg = new SettingsDialog();
+            dlg.Settings = cfg;
+            dlg.GameDir = GameDir;
+
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+                dlg.Settings.SaveXML(GetSettingsFilePath());
+
+            if (dlg.NeedLicenseValidate)
+                ValidateLicense();
         }
     }
 }
