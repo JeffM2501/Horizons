@@ -51,7 +51,6 @@ namespace SHLanucher
             UpMan.FileDownloadError += UpMan_FileDownloadError;
         }
 
-
         private void UpMan_FileDownloadError(object sender, UpdateManager.FileProgressEventArgs e)
         {
             PushLog("Downloading file " + e.DownloadFileName + " failed");
@@ -102,8 +101,6 @@ namespace SHLanucher
         {
             PushLog("Updating Files...");
         }
-
-      
 
         private void UpMan_UpdateServerConnectFailed(object sender, EventArgs e)
         {
@@ -235,7 +232,7 @@ namespace SHLanucher
             if (!ret)
                 InvalidLicense();
 
-            return true; // ret;
+            return ret;
         }
 
         private void Launcher_FormClosing(object sender, FormClosingEventArgs e)
@@ -334,16 +331,7 @@ namespace SHLanucher
 
         protected void InvalidLicense()
         {
-            FileInfo licenseFile = new FileInfo(GetLicenseFilePath());
-
-            if (!licenseFile.Exists)
-            {
-                string pcode = HorizonLicenses.GenerateProductCode();
-                UpMan.ProductCode = pcode;
-                HorizonLicenses.WriteLicenseFile(licenseFile, HorizonLicenses.CreateLicenseString(pcode, "Alpha", licenseFile.FullName));
-            }
-
-           //   Close();
+            Close();
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)
@@ -353,7 +341,7 @@ namespace SHLanucher
             if (!licenseFile.Exists)
             {
                 InvalidLicense();
-            //    return;
+                return;
             }
 
             string code = string.Empty;

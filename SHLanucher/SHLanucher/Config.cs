@@ -540,6 +540,7 @@ namespace SHLanucher
 
             tw.WriteEndElement();
         }
+
         private void WriteCollision(XmlTextWriter tw)
         {
             tw.WriteStartElement("collision");
@@ -642,7 +643,7 @@ namespace SHLanucher
                 sw.Flush();
                 sw.Close();
             }
-            catch (Exception ex)
+            catch (Exception /*ex*/)
             {
   
             }

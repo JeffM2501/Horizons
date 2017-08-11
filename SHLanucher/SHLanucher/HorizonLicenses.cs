@@ -9,23 +9,6 @@ namespace SHLanucher
 {
     internal static class HorizonLicenses
     {
-
-        internal static string GenerateProductCode()
-        {
-            int len = 32;
-
-            StringBuilder sb = new StringBuilder();
-            Random rng = new Random();
-
-            for (int i = 0; i < len; i++)
-            {
-                int v = rng.Next(10);
-                sb.Append(v.ToString());
-            }
-
-            return sb.ToString();
-        }
-
         internal static string CreateLicenseString(string productCode, string product, string path)
         {
             try

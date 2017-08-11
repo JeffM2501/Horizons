@@ -19,8 +19,6 @@ namespace SHLanucher
         public static string CryptoSecret = "SH1864";
         public string ProductCode = string.Empty;
 
-        public bool UseRealMacName = false;
-
         public string VersionToReport = "1.2.0.0";
         public string UpdateServerURL = "http://updates.starshiphorizons.com/comm/";
 
@@ -103,22 +101,6 @@ namespace SHLanucher
 
         private void CheckLicenseData()
         {
-            if (ProductCode == string.Empty)    // if we don't have a valid product code, generate one, the update server doesn't care
-            {
-                int len = 32;
-
-                StringBuilder sb = new StringBuilder();
-                Random rng = new Random();
-
-                for (int i = 0; i < len; i++)
-                {
-                    int v = rng.Next(10);
-                    sb.Append(v.ToString());
-                }
-
-                ProductCode = sb.ToString();
-            }
-
             LicenseKeyGUID = new Guid(ProductCode);
         }
 
@@ -340,7 +322,7 @@ namespace SHLanucher
 
             data.Add("Timestamp", HorizonCrypto.TimeStamp());
             data.Add("TimeDiff", LicenseKeyGUID.ToString());
-            data.Add("MacName", UseRealMacName ? Environment.MachineName : "DELL_" + new Random().Next().ToString());
+            data.Add("MacName", Environment.MachineName);
             data.Add("Launcher", VersionToReport);
             data.Add("Data", encryptedMagic);
 
