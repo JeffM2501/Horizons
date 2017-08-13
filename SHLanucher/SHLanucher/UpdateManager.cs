@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Text;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace SHLanucher
 {
@@ -57,9 +58,9 @@ namespace SHLanucher
 
             public int DownloadIndex = 0;
 
-            public double Progress = 0;
+            public int Progress = 0;
 
-            public FileProgressEventArgs(string dl, string lf, int i, double p)
+            public FileProgressEventArgs(string dl, string lf, int i, int p)
             {
                 DownloadFileName = dl;
                 LocalFileName = lf;
@@ -85,6 +86,7 @@ namespace SHLanucher
         public event EventHandler<FileProgressEventArgs> FileDownloadCompleted = null;
         public event EventHandler<FileProgressEventArgs> FileDownloadProgress = null;
         public event EventHandler<FileProgressEventArgs> FileDownloadError = null;
+        public event EventHandler<FileProgressEventArgs> FileDownloadErrorRetry = null;
 
         public event EventHandler FileSyncEnded = null;
        
@@ -93,6 +95,10 @@ namespace SHLanucher
         public event EventHandler UpdateComplete = null;
 
         protected Dictionary<string, FileInfo> LocalFileMap = new Dictionary<string, FileInfo>();
+
+        protected List<string> FailedFiles = new List<string>();
+
+        public string[] GetFailedFiles () { lock (FailedFiles) return FailedFiles.ToArray(); }
 
         public UpdateManager (DirectoryInfo root)
         {
@@ -177,6 +183,12 @@ namespace SHLanucher
             }
         }
 
+        protected void PushReDownloadFile(string file)
+        {
+            lock (FilesToDownload)
+                FilesToDownload.Add(file);
+        }
+
         protected virtual void ProcessUpdate()
         {
             SetLastError(string.Empty);
@@ -197,7 +209,9 @@ namespace SHLanucher
             }
 
             if (FilesToDownload.Count > 0)
+            {
                 SyncFiles();
+            }
             else
                 FileSyncNotNeeded?.Invoke(this, EventArgs.Empty);
 
@@ -215,13 +229,33 @@ namespace SHLanucher
             public FileProgressEventArgs Args = null;
             public FileInfo LocalFile = null;
 
+            public SHA1Managed Hasher = new SHA1Managed();
+
             public object Tag = null;
         }
 
         protected List<FileDownloadInfo> DownloadPool = new List<FileDownloadInfo>();
 
+        public bool PushRetryFile(string file)
+        {
+            lock (FailedFiles)
+            {
+                if (!FailedFiles.Contains(file))
+                {
+                    FailedFiles.Add(file);
+                    PushReDownloadFile(file);
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void SyncFiles()
         {
+            FailedFiles.Clear();
+
             FileSyncStarted?.Invoke(this, EventArgs.Empty);
 
             for (int i =0; i < MaxDownloads; i++)
@@ -254,7 +288,7 @@ namespace SHLanucher
             if (info == null)
                 return;
 
-            info.Args.Progress = e.ProgressPercentage * 0.01;
+            info.Args.Progress = e.ProgressPercentage;
 
             FileDownloadProgress?.Invoke(this, info.Args);
         }
@@ -267,11 +301,11 @@ namespace SHLanucher
 
             if (e.Error != null || e.Cancelled)
             {
-                info.Args.Progress = -1;
+                info.Args.Progress = 100;
                 FileDownloadError?.Invoke(this, info.Args);
             }
 
-            info.Args.Progress = 1;
+            info.Args.Progress = 100;
             FileDownloadProgress?.Invoke(this, info.Args);
 
             lock (info.LocalFile.Directory)
@@ -280,15 +314,27 @@ namespace SHLanucher
                     info.LocalFile.Directory.Create();
             }
 
-            var fs = info.LocalFile.OpenWrite();
-            var ms = new MemoryStream(e.Result);
-            DeflateStream df = new DeflateStream(ms, CompressionMode.Decompress);
+            try
+            {
+                var fs = info.LocalFile.OpenWrite();
+                var ms = new MemoryStream(e.Result);
+                DeflateStream df = new DeflateStream(ms, CompressionMode.Decompress);
 
-            df.CopyTo(fs);
-            df.Close();
-            fs.Close();
+                df.CopyTo(fs);
+                df.Close();
+                fs.Close();
 
-            FileDownloadCompleted?.Invoke(this, info.Args);
+                FileDownloadCompleted?.Invoke(this, info.Args);
+            }
+            catch (Exception)
+            {
+                info.Args.Progress = 100;
+
+                if (PushRetryFile(info.Args.DownloadFileName))
+                    FileDownloadErrorRetry?.Invoke(this, info.Args);
+                else
+                    FileDownloadError?.Invoke(this, info.Args);
+            }
 
             StartDLJob(info);
         }

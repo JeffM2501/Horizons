@@ -642,7 +642,7 @@ namespace SHLanucher
                 sw.Flush();
                 sw.Close();
             }
-            catch (Exception ex)
+            catch (Exception /*ex*/)
             {
   
             }

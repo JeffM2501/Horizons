@@ -19,6 +19,8 @@ namespace SHLanucher
 
         protected UpdateManager UpMan = null;
 
+        protected bool ForcedUpdate = false;
+
         public Launcher()
         {
             GameDir = new DirectoryInfo(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Game"));
@@ -49,8 +51,13 @@ namespace SHLanucher
             UpMan.FileDownloadCompleted += UpMan_FileDownloadCompleted;
             UpMan.FileDownloadProgress += UpMan_FileDownloadProgress;
             UpMan.FileDownloadError += UpMan_FileDownloadError;
+            UpMan.FileDownloadErrorRetry += UpMan_FileDownloadErrorRetry;
         }
 
+        private void UpMan_FileDownloadErrorRetry(object sender, UpdateManager.FileProgressEventArgs e)
+        {
+            PushLog("Downloading file " + e.DownloadFileName + " adding to retry list");
+        }
 
         private void UpMan_FileDownloadError(object sender, UpdateManager.FileProgressEventArgs e)
         {
@@ -62,7 +69,7 @@ namespace SHLanucher
             if (e.DownloadIndex - 1 < ProgressBars.Count)
             {
                 var bar = ProgressBars[e.DownloadIndex - 1];
-                bar.Item2.BeginInvoke(new Action(() => bar.Item2.Value = (int)(e.Progress * 100)));
+                bar.Item2.BeginInvoke(new Action(() => bar.Item2.Value = e.Progress));
             }
         }
 
@@ -95,6 +102,10 @@ namespace SHLanucher
         private void UpMan_FileSyncEnded(object sender, EventArgs e)
         {
             PushLog("File Update Complete");
+
+            foreach (var f in UpMan.GetFailedFiles())
+                PushLog(f + " failed");
+
             DisableProgressBars();
         }
 
@@ -102,8 +113,6 @@ namespace SHLanucher
         {
             PushLog("Updating Files...");
         }
-
-      
 
         private void UpMan_UpdateServerConnectFailed(object sender, EventArgs e)
         {
@@ -133,9 +142,29 @@ namespace SHLanucher
         {
             PushLog("Update Completed");
             PushLog("Elapsed time :" + string.Format("{0:hh\\:mm\\:ss}",(DateTime.Now - UpdateStartTime)));
-            PushLog("Valid install detected, Launch when ready");
-            UpdateButton.BeginInvoke(new Action(() => UpdateButton.Enabled = true));
+
+
+            if (UpMan.GetFailedFiles().Length == 0)
+            {
+                PushLog("Invalid files detected, game may not be stable");
+                PushLog("Launch with caution");
+
+            }
+            else
+            {
+                PushLog("Files valid");
+                PushLog("Launch when ready");
+            }
+
             LaunchButton.BeginInvoke(new Action(() => LaunchButton.Enabled = true));
+            UpdateButton.BeginInvoke(new Action(() => UpdateButton.Enabled = true));
+
+            if (ForcedUpdate)
+            {
+                ForcedUpdate = false;
+                if (UpMan.GetFailedFiles().Length == 0)
+                    NewsButton.BeginInvoke(new Action(() => NewsButton_Click(this,EventArgs.Empty)));
+            }
         }
 
         private void UpMan_UpdateFailed(object sender, EventArgs e)
@@ -174,6 +203,7 @@ namespace SHLanucher
                 }
                 else 
                 {
+                    ForcedUpdate = true;
                     PushLog("Invalid install detected, forcing update");
                     UpdateButton_Click(sender, e);
                 }
@@ -213,6 +243,7 @@ namespace SHLanucher
                     }
                     else
                     {
+                        ForcedUpdate = true;
                         PushLog("Invalid install detected, forcing update");
                         SettingsButton.Enabled = HasSettings();
                         UpdateButton_Click(sender, e);
