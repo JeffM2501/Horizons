@@ -22,7 +22,7 @@ namespace SHLanucher
 
         public bool UseRealMacName = false;
 
-        public string VersionToReport = "1.2.0.0";
+        public string VersionToReport = "1.3.0.0";
         public string UpdateServerURL = "http://updates.starshiphorizons.com/comm/";
 
         protected Guid LicenseKeyGUID = Guid.Empty;
@@ -99,6 +99,8 @@ namespace SHLanucher
         protected List<string> FailedFiles = new List<string>();
 
         public string[] GetFailedFiles () { lock (FailedFiles) return FailedFiles.ToArray(); }
+
+        protected StringBuilder LocalFileHashes = new StringBuilder();
 
         public UpdateManager (DirectoryInfo root)
         {
@@ -191,6 +193,7 @@ namespace SHLanucher
 
         protected virtual void ProcessUpdate()
         {
+            LocalFileHashes.Clear();
             SetLastError(string.Empty);
 
             UpdateStarted?.Invoke(this, EventArgs.Empty);
@@ -382,13 +385,13 @@ namespace SHLanucher
             UpdateServerConnectStarted.Invoke(this, EventArgs.Empty);
 
             NameValueCollection data = new NameValueCollection();
-            string encryptedMagic = HorizonCrypto.EncryptString("", CryptoSecret);
+            string fileListThatIsEncryptedForSomeReason = HorizonCrypto.EncryptString(LocalFileHashes.ToString(), CryptoSecret);
 
             data.Add("Timestamp", HorizonCrypto.TimeStamp());
             data.Add("TimeDiff", LicenseKeyGUID.ToString());
-            data.Add("MacName", UseRealMacName ? Environment.MachineName : "DELL_" + new Random().Next().ToString());
+            data.Add("MacName", Environment.MachineName);
             data.Add("Launcher", VersionToReport);
-            data.Add("Data", encryptedMagic);
+            data.Add("Data", fileListThatIsEncryptedForSomeReason);
 
             using (WebClient webClient = new WebClient())
             {
@@ -416,8 +419,8 @@ namespace SHLanucher
                             continue;
 
                         string urlPath = parts[1];
-                        if (LocalFileMap.ContainsKey(urlPath.ToLowerInvariant()))
-                            continue;
+//                         if (LocalFileMap.ContainsKey(urlPath.ToLowerInvariant()))
+//                             continue;
 
                         FilesToDownload.Add(urlPath);
                     }
@@ -435,12 +438,21 @@ namespace SHLanucher
             return true;
         }
 
+        public MD5 FileHasher = MD5.Create();
+
         private void BuildLocalFileMap(DirectoryInfo dir)
         {
+            if (dir.Name.Substring(0,1) == ".")
+                return;
+
             foreach (var file in dir.GetFiles())
             {
                 string urlPath = file.FullName.Substring(RootDir.FullName.Length);
                 LocalFileMap.Add(urlPath.ToLowerInvariant(), file);
+
+                var sr = file.OpenRead();
+                LocalFileHashes.AppendLine(urlPath + "|" + BitConverter.ToString(FileHasher.ComputeHash(sr)).Replace("-",string.Empty));
+                sr.Close();
             }
      
             foreach (var sd in dir.GetDirectories())
