@@ -59,7 +59,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Validating License";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LicenseUpdateProgress_FormClosing);
             this.Load += new System.EventHandler(this.LicenseUpdateProgress_Load);

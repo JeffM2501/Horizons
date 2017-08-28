@@ -92,6 +92,8 @@ namespace SHLanucher
 
         protected Dictionary<string, FileInfo> LocalFileMap = new Dictionary<string, FileInfo>();
 
+        protected Dictionary<string, string> LocalHashes = new Dictionary<string, string>();
+
         public UpdateManager (DirectoryInfo root)
         {
             RootDir = root;
