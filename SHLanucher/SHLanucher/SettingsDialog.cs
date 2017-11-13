@@ -35,6 +35,12 @@ namespace SHLanucher
             OptionsCTL.GameDir = GameDir;
             OptionsCTL.NeedLicenseValidate = NeedLicenseValidate;
             OptionsCTL.Setup();
+
+
+            ControlerTab.Settings = Settings;
+            ControlerTab.Setup();
+
+            ControlerTab.Visible = false;
         }
 
         private void OK_Click(object sender, EventArgs e)
@@ -49,6 +55,7 @@ namespace SHLanucher
             Controller.BackColor = InactiveColor;
 
             OptionsCTL.Visible = true;
+            ControlerTab.Visible = false;
         }
 
         private void Controller_Click(object sender, EventArgs e)
@@ -57,6 +64,12 @@ namespace SHLanucher
             Options.BackColor = InactiveColor;
 
             OptionsCTL.Visible = false;
+            ControlerTab.Visible = true;
+        }
+
+        private void ControlerTab_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,7 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.CommandList = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
+            // 
+            // CommandList
+            // 
+            this.CommandList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CommandList.AutoScroll = true;
+            this.CommandList.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.CommandList.Location = new System.Drawing.Point(0, 0);
+            this.CommandList.Name = "CommandList";
+            this.CommandList.Size = new System.Drawing.Size(575, 327);
+            this.CommandList.TabIndex = 0;
+            this.CommandList.WrapContents = false;
             // 
             // ControllerSetup
             // 
@@ -36,6 +50,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.CommandList);
             this.Name = "ControllerSetup";
             this.Size = new System.Drawing.Size(578, 330);
             this.ResumeLayout(false);
@@ -43,5 +58,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel CommandList;
     }
 }

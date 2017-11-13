@@ -97,7 +97,14 @@
     <Compile Include="SettingsTabs\StickCTL.Designer.cs">
       <DependentUpon>StickCTL.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsTabs\StickGetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsTabs\StickGetter.Designer.cs">
+      <DependentUpon>StickGetter.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateManager.cs" />
+    <Compile Include="WinMMAPI.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +141,11 @@
     <EmbeddedResource Include="SettingsTabs\StickCTL.resx">
       <DependentUpon>StickCTL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SettingsTabs\StickGetter.resx">
+      <DependentUpon>StickGetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,7 +165,6 @@
   <ItemGroup>
     <None Include="Resources\1.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)$(TargetFileName)</PostBuildEvent>

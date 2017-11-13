@@ -33,6 +33,7 @@
             this.Options = new System.Windows.Forms.Button();
             this.Controller = new System.Windows.Forms.Button();
             this.OptionsCTL = new SHLanucher.SettingsTabs.Options();
+            this.ControlerTab = new SHLanucher.SettingsTabs.ControllerSetup();
             this.SuspendLayout();
             // 
             // OK
@@ -103,6 +104,16 @@
             this.OptionsCTL.Size = new System.Drawing.Size(550, 367);
             this.OptionsCTL.TabIndex = 22;
             // 
+            // ControlerTab
+            // 
+            this.ControlerTab.BackColor = System.Drawing.Color.Black;
+            this.ControlerTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ControlerTab.Location = new System.Drawing.Point(13, 54);
+            this.ControlerTab.Name = "ControlerTab";
+            this.ControlerTab.Size = new System.Drawing.Size(549, 367);
+            this.ControlerTab.TabIndex = 23;
+            this.ControlerTab.Load += new System.EventHandler(this.ControlerTab_Load);
+            // 
             // SettingsDialog
             // 
             this.AcceptButton = this.OK;
@@ -111,6 +122,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.Cancel;
             this.ClientSize = new System.Drawing.Size(574, 484);
+            this.Controls.Add(this.ControlerTab);
             this.Controls.Add(this.OptionsCTL);
             this.Controls.Add(this.Controller);
             this.Controls.Add(this.Options);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.Button Options;
         private System.Windows.Forms.Button Controller;
         private SettingsTabs.Options OptionsCTL;
+        private SettingsTabs.ControllerSetup ControlerTab;
     }
 }
