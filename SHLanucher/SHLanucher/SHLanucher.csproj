@@ -79,6 +79,24 @@
     <Compile Include="SettingsDialog.Designer.cs">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsTabs\ControllerSetup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsTabs\ControllerSetup.Designer.cs">
+      <DependentUpon>ControllerSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsTabs\Options.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsTabs\Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsTabs\StickCTL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SettingsTabs\StickCTL.Designer.cs">
+      <DependentUpon>StickCTL.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateManager.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -102,9 +120,19 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsDialog.resx">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsTabs\ControllerSetup.resx">
+      <DependentUpon>ControllerSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsTabs\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsTabs\StickCTL.resx">
+      <DependentUpon>StickCTL.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,6 +153,7 @@
   <ItemGroup>
     <None Include="Resources\1.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)$(TargetFileName)</PostBuildEvent>
