@@ -141,8 +141,19 @@
             &lt;font size="2" color="#ffff00"&gt;Special Thanks To&lt;/font&gt;&lt;br/&gt;
             &lt;font color=White&gt;Rick Aseltine, Carl Weber, Tim Prickett, Fred Beebe, Bonnie Beebe, Matt Beebe,&lt;br/&gt;Alexandra Hernly, Elizabeth Hernly, Jim Lemaster, Brian Lassiter, Bryan Haven&lt;/font&gt;
             &lt;br/&gt;&lt;br/&gt;
+			
+			&lt;font size="2" color="#ffff00"&gt;Launcher Music&lt;/font&gt;&lt;br/&gt;
+            &lt;font color=White&gt;Fanfare for Space Kevin MacLeod (incompetech.com)&lt;br/&gt;
+				Licensed under Creative Commons: By Attribution 3.0 License&lt;br/&gt;
+				http://creativecommons.org/licenses/by/3.0/&lt;/font&gt;
+            &lt;br/&gt;&lt;br/&gt;
+			
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/center&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Fanfare_for_Space" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Fanfare for Space.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

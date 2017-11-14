@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using NAudio;
+using NAudio.Wave;
+
 namespace SHLanucher
 {
     internal partial class Launcher : Form
@@ -18,6 +21,9 @@ namespace SHLanucher
         private static DirectoryInfo GameDir = null;
 
         protected UpdateManager UpMan = null;
+
+        private WaveOutEvent AudioOutputDevice;
+        private WaveStream BackgroundAudioFile;
 
         public Launcher()
         {
@@ -155,6 +161,14 @@ namespace SHLanucher
 
             PushLog("Startup");
 
+            AudioOutputDevice = new WaveOutEvent();
+            BackgroundAudioFile = new Mp3FileReader(new MemoryStream(Resources.Fanfare_for_Space));
+
+            AudioOutputDevice.Init(BackgroundAudioFile);
+
+            AudioOutputDevice.Play();
+            AudioOutputDevice.Volume = 0.25f;
+
             SettingsButton.Enabled = HasSettings();
 
             if (!IsLicensed())
@@ -237,6 +251,11 @@ namespace SHLanucher
 
         private void Launcher_FormClosing(object sender, FormClosingEventArgs e)
         {
+            AudioOutputDevice?.Stop();
+
+            AudioOutputDevice?.Dispose();
+            BackgroundAudioFile?.Dispose();
+
             WebContext.Stop();
             WebContext.Dispose();
             UpMan.Kill();

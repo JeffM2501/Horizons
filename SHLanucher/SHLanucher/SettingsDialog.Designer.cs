@@ -32,8 +32,8 @@
             this.Cancel = new System.Windows.Forms.Button();
             this.Options = new System.Windows.Forms.Button();
             this.Controller = new System.Windows.Forms.Button();
-            this.OptionsCTL = new SHLanucher.SettingsTabs.Options();
             this.ControlerTab = new SHLanucher.SettingsTabs.ControllerSetup();
+            this.OptionsCTL = new SHLanucher.SettingsTabs.Options();
             this.SuspendLayout();
             // 
             // OK
@@ -44,8 +44,8 @@
             this.OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK.ForeColor = System.Drawing.Color.White;
-            this.OK.Location = new System.Drawing.Point(631, 537);
-            this.OK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OK.Location = new System.Drawing.Point(666, 537);
+            this.OK.Margin = new System.Windows.Forms.Padding(4);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(119, 44);
             this.OK.TabIndex = 0;
@@ -61,8 +61,8 @@
             this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel.ForeColor = System.Drawing.Color.White;
-            this.Cancel.Location = new System.Drawing.Point(513, 537);
-            this.Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cancel.Location = new System.Drawing.Point(548, 537);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(4);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(109, 44);
             this.Cancel.TabIndex = 1;
@@ -76,7 +76,7 @@
             this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.ForeColor = System.Drawing.Color.White;
             this.Options.Location = new System.Drawing.Point(16, 15);
-            this.Options.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Options.Margin = new System.Windows.Forms.Padding(4);
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(109, 44);
             this.Options.TabIndex = 20;
@@ -91,7 +91,7 @@
             this.Controller.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Controller.ForeColor = System.Drawing.Color.White;
             this.Controller.Location = new System.Drawing.Point(133, 15);
-            this.Controller.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controller.Margin = new System.Windows.Forms.Padding(4);
             this.Controller.Name = "Controller";
             this.Controller.Size = new System.Drawing.Size(129, 44);
             this.Controller.TabIndex = 21;
@@ -99,26 +99,32 @@
             this.Controller.UseVisualStyleBackColor = false;
             this.Controller.Click += new System.EventHandler(this.Controller_Click);
             // 
+            // ControlerTab
+            // 
+            this.ControlerTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ControlerTab.BackColor = System.Drawing.Color.Black;
+            this.ControlerTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ControlerTab.Location = new System.Drawing.Point(16, 66);
+            this.ControlerTab.Margin = new System.Windows.Forms.Padding(5);
+            this.ControlerTab.Name = "ControlerTab";
+            this.ControlerTab.Size = new System.Drawing.Size(768, 451);
+            this.ControlerTab.TabIndex = 23;
+            this.ControlerTab.Load += new System.EventHandler(this.ControlerTab_Load);
+            // 
             // OptionsCTL
             // 
+            this.OptionsCTL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OptionsCTL.BackColor = System.Drawing.Color.Black;
             this.OptionsCTL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.OptionsCTL.Location = new System.Drawing.Point(16, 66);
-            this.OptionsCTL.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.OptionsCTL.Margin = new System.Windows.Forms.Padding(5);
             this.OptionsCTL.Name = "OptionsCTL";
-            this.OptionsCTL.Size = new System.Drawing.Size(733, 451);
+            this.OptionsCTL.Size = new System.Drawing.Size(768, 451);
             this.OptionsCTL.TabIndex = 22;
-            // 
-            // ControlerTab
-            // 
-            this.ControlerTab.BackColor = System.Drawing.Color.Black;
-            this.ControlerTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ControlerTab.Location = new System.Drawing.Point(17, 66);
-            this.ControlerTab.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.ControlerTab.Name = "ControlerTab";
-            this.ControlerTab.Size = new System.Drawing.Size(731, 451);
-            this.ControlerTab.TabIndex = 23;
-            this.ControlerTab.Load += new System.EventHandler(this.ControlerTab_Load);
             // 
             // SettingsDialog
             // 
@@ -127,7 +133,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.Cancel;
-            this.ClientSize = new System.Drawing.Size(765, 596);
+            this.ClientSize = new System.Drawing.Size(800, 596);
             this.Controls.Add(this.ControlerTab);
             this.Controls.Add(this.OptionsCTL);
             this.Controls.Add(this.Controller);
@@ -135,7 +141,7 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsDialog";
