@@ -145,8 +145,6 @@
     <EmbeddedResource Include="SettingsTabs\StickGetter.resx">
       <DependentUpon>StickGetter.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="OpenTK.dll.config" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
