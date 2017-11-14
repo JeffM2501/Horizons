@@ -1,0 +1,29 @@
+While this tool was inspired by and works with Starship Horizons by Mythric Studios LLC.
+https://www.starshiphorizons.com/
+
+It does not include any direct source code from any product they make.
+The sources for this tool are origonal and based on public API calls made by Starship Horizons.
+Some of the art assets use data from the Starship Horizons website and are copyright 2017 Mythric Studios LLC.
+
+Use of the source and the codebase are only for authorized persons.
+
+Copyright (c) 2017, Jeffery Myers
+All rights reserved.
+Proprietary and confidential
+
+Unauthorized copying of these files, sorce code or binary, via any medium is strictly prohibited
+
+This software may not be distributed or used with out express permission from
+Jeffery Myers.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS TO USERS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
