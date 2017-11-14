@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="HorizonCrypto.cs" />
     <Compile Include="HorizonLicenses.cs" />
+    <Compile Include="Joystick.cs" />
     <Compile Include="LicenseEntryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
