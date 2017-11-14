@@ -44,9 +44,10 @@
             this.OK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OK.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OK.ForeColor = System.Drawing.Color.White;
-            this.OK.Location = new System.Drawing.Point(473, 436);
+            this.OK.Location = new System.Drawing.Point(631, 537);
+            this.OK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(89, 36);
+            this.OK.Size = new System.Drawing.Size(119, 44);
             this.OK.TabIndex = 0;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = false;
@@ -60,9 +61,10 @@
             this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cancel.ForeColor = System.Drawing.Color.White;
-            this.Cancel.Location = new System.Drawing.Point(385, 436);
+            this.Cancel.Location = new System.Drawing.Point(513, 537);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(82, 36);
+            this.Cancel.Size = new System.Drawing.Size(109, 44);
             this.Cancel.TabIndex = 1;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = false;
@@ -73,9 +75,10 @@
             this.Options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.ForeColor = System.Drawing.Color.White;
-            this.Options.Location = new System.Drawing.Point(12, 12);
+            this.Options.Location = new System.Drawing.Point(16, 15);
+            this.Options.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(82, 36);
+            this.Options.Size = new System.Drawing.Size(109, 44);
             this.Options.TabIndex = 20;
             this.Options.Text = "Options";
             this.Options.UseVisualStyleBackColor = false;
@@ -87,9 +90,10 @@
             this.Controller.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Controller.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Controller.ForeColor = System.Drawing.Color.White;
-            this.Controller.Location = new System.Drawing.Point(100, 12);
+            this.Controller.Location = new System.Drawing.Point(133, 15);
+            this.Controller.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Controller.Name = "Controller";
-            this.Controller.Size = new System.Drawing.Size(97, 36);
+            this.Controller.Size = new System.Drawing.Size(129, 44);
             this.Controller.TabIndex = 21;
             this.Controller.Text = "Controller";
             this.Controller.UseVisualStyleBackColor = false;
@@ -99,29 +103,31 @@
             // 
             this.OptionsCTL.BackColor = System.Drawing.Color.Black;
             this.OptionsCTL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.OptionsCTL.Location = new System.Drawing.Point(12, 54);
+            this.OptionsCTL.Location = new System.Drawing.Point(16, 66);
+            this.OptionsCTL.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.OptionsCTL.Name = "OptionsCTL";
-            this.OptionsCTL.Size = new System.Drawing.Size(550, 367);
+            this.OptionsCTL.Size = new System.Drawing.Size(733, 451);
             this.OptionsCTL.TabIndex = 22;
             // 
             // ControlerTab
             // 
             this.ControlerTab.BackColor = System.Drawing.Color.Black;
             this.ControlerTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ControlerTab.Location = new System.Drawing.Point(13, 54);
+            this.ControlerTab.Location = new System.Drawing.Point(17, 66);
+            this.ControlerTab.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.ControlerTab.Name = "ControlerTab";
-            this.ControlerTab.Size = new System.Drawing.Size(549, 367);
+            this.ControlerTab.Size = new System.Drawing.Size(731, 451);
             this.ControlerTab.TabIndex = 23;
             this.ControlerTab.Load += new System.EventHandler(this.ControlerTab_Load);
             // 
             // SettingsDialog
             // 
             this.AcceptButton = this.OK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.Cancel;
-            this.ClientSize = new System.Drawing.Size(574, 484);
+            this.ClientSize = new System.Drawing.Size(765, 596);
             this.Controls.Add(this.ControlerTab);
             this.Controls.Add(this.OptionsCTL);
             this.Controls.Add(this.Controller);
@@ -129,6 +135,7 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsDialog";
@@ -137,6 +144,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsDialog_FormClosing);
             this.Load += new System.EventHandler(this.SettingsDialog_Load);
             this.ResumeLayout(false);
 

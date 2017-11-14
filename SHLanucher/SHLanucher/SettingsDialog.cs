@@ -71,5 +71,10 @@ namespace SHLanucher
         {
 
         }
+
+        private void SettingsDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ControlerTab.Shutdown();
+        }
     }
 }

@@ -57,60 +57,11 @@ namespace SHLanucher.SettingsTabs
 
         public void LoadSticks()
         {
-            for(int i = 0; i < WinMMAPI.joyGetNumDevs(); i++)
-            {
-                WinMMAPI.JOYCAPS caps = new WinMMAPI.JOYCAPS();
-                int size = Marshal.SizeOf(caps);
+            if (Joystick.GetDevices().Length == 0)
+                return;
 
-                WinMMAPI.ResultCode result = WinMMAPI.joyGetDevCapsA(i, caps, size);
-
-                if (result == WinMMAPI.ResultCode.NoError && caps.Name != string.Empty)
-                {
-                    for (int a = 0; a < caps.axesNumber; a++)
-                        AxisNames.Add(GetAxisLabel(a));
-
-                    for (int b = 0; b < caps.buttonsNumber; b++)
-                        ButtonNames.Add(GetButtonLabel(b));
-                }
-            }
-        }
-
-        public static string GetButtonLabel(int index)
-        {
-            return "Button" + (index + 1).ToString();
-        }
-
-        public static string GetAxisLabel(int index)
-        {
-            switch(index)
-            {
-                case 0:
-                    return "X";
-                case 1:
-                    return "Y";
-                case 2:
-                    return "R";
-                case 3:
-                    return "Z";
-            }
-
-            return "Axis_" + index.ToString();
-        }
-
-        public int GetGamePadCount()
-        {
-            return 0;
-//             int count = 0;
-//             for (int i = 0; i < 16; i++)
-//             {
-//                 GamePadCapabilities caps = GamePad.GetCapabilities(i);
-//                 if (!caps.IsConnected)
-//                     return count;
-//                 count++;
-// 
-//             }
-// 
-//             return count;
+            AxisNames = Joystick.GetDevices()[0].Axes;
+            ButtonNames = Joystick.GetDevices()[0].Buttons;
         }
 
         private void InputItem_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +71,7 @@ namespace SHLanucher.SettingsTabs
         private void button1_Click(object sender, EventArgs e)
         {
             StickGetter getter = new StickGetter();
+            getter.IsAxis = IsAxis;
             getter.Command = Command;
             if (getter.ShowDialog(this) == DialogResult.Cancel)
                 return;

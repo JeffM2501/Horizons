@@ -38,9 +38,10 @@
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancel.ForeColor = System.Drawing.Color.White;
-            this.Cancel.Location = new System.Drawing.Point(255, 27);
+            this.Cancel.Location = new System.Drawing.Point(340, 33);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(62, 23);
+            this.Cancel.Size = new System.Drawing.Size(83, 28);
             this.Cancel.TabIndex = 3;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -50,29 +51,31 @@
             // 
             this.CommandLabel.AutoSize = true;
             this.CommandLabel.ForeColor = System.Drawing.Color.White;
-            this.CommandLabel.Location = new System.Drawing.Point(3, 9);
+            this.CommandLabel.Location = new System.Drawing.Point(4, 11);
+            this.CommandLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CommandLabel.Name = "CommandLabel";
-            this.CommandLabel.Size = new System.Drawing.Size(208, 13);
+            this.CommandLabel.Size = new System.Drawing.Size(255, 16);
             this.CommandLabel.TabIndex = 4;
             this.CommandLabel.Text = "Please use the control you want to bind to ";
             // 
             // StickGetter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(329, 62);
+            this.ClientSize = new System.Drawing.Size(439, 76);
             this.ControlBox = false;
             this.Controls.Add(this.CommandLabel);
             this.Controls.Add(this.Cancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StickGetter";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StickGetter";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.StickGetter_Load);
