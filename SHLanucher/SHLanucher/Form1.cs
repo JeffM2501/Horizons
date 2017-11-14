@@ -261,7 +261,7 @@ namespace SHLanucher
 
         private void NewsButton_Click(object sender, EventArgs e)
         {
-            WebContext.Navigate("http://www.starshiphorizons.com/pediab/bare.aspx?id=Active_Release");
+            WebContext.Navigate("https://www.starshiphorizons.com/pediab/bare.aspx?id=Active_Release");
             WebContext.Visible = true;
             LogText.Visible = false;
             ProgressPannel.Visible = false;
