@@ -23,7 +23,7 @@ namespace MissionManager.Horizons
             {
                 vec = new Vector3D();
 
-                if (value == string.Empty)
+                if (value == null || value == string.Empty)
                     return false;
 
                 string[] parts = value.Split(" ".ToCharArray(), 3);
@@ -35,7 +35,7 @@ namespace MissionManager.Horizons
 
             public override string ToString()
             {
-                return X.ToString() + " " + Y.ToString() + Z.ToString();
+                return X.ToString() + " " + Y.ToString() + " " + Z.ToString();
             }
         }
         public string name = string.Empty;
@@ -107,22 +107,22 @@ namespace MissionManager.Horizons
             public void ReadXml(XmlReader reader)
             {
                 string v = reader.GetAttribute("min");
-                if (v != string.Empty)
+                if (v !=null && v != string.Empty)
                     int.TryParse(v, out min);
 
                 v = reader.GetAttribute("max");
-                if (v != string.Empty)
+                if (v != null && v != string.Empty)
                     int.TryParse(v, out max);
 
                 players.Clear();
                 while (reader.Read() && reader.Name == "player")
                 {
                     Player p = new Player();
-                    p.name = reader.GetAttribute("name");
-                    p.designation = reader.GetAttribute("designation");
-                    p.vesselclass = reader.GetAttribute("vesselclass");
-                    p.faction = reader.GetAttribute("faction");
-                    p.spawn = reader.GetAttribute("spawn");
+                    p.name = reader.GetAttribute("name") ?? string.Empty;
+                    p.designation = reader.GetAttribute("designation") ?? string.Empty;
+                    p.vesselclass = reader.GetAttribute("vesselclass") ?? string.Empty;
+                    p.faction = reader.GetAttribute("faction") ?? string.Empty;
+                    p.spawn = reader.GetAttribute("spawn") ?? string.Empty;
 
                     players.Add(p);
                 }
@@ -155,15 +155,15 @@ namespace MissionManager.Horizons
                 {
                     Spawn s = new Spawn();
 
-                    s.id = reader.GetAttribute("id");
-                    s.galaxy = reader.GetAttribute("galaxy");
-                    s.system = reader.GetAttribute("system");
-                    s.planet = reader.GetAttribute("planet");
-                    Vector3D.TryParse(reader.GetAttribute("postion"), out s.postion);
+                    s.id = reader.GetAttribute("id") ?? string.Empty;
+                    s.galaxy = reader.GetAttribute("galaxy") ?? string.Empty;
+                    s.system = reader.GetAttribute("system") ?? string.Empty;
+                    s.planet = reader.GetAttribute("planet") ?? string.Empty;
+                    Vector3D.TryParse(reader.GetAttribute("position"), out s.postion);
                     Vector3D.TryParse(reader.GetAttribute("orientation"), out s.orientation);
-                    s.docked = reader.GetAttribute("docked");
-                    s.dock = reader.GetAttribute("dock");
-                    s.maneuver = reader.GetAttribute("maneuver");
+                    s.docked = reader.GetAttribute("docked") ?? string.Empty;
+                    s.dock = reader.GetAttribute("dock") ?? string.Empty;
+                    s.maneuver = reader.GetAttribute("maneuver") ?? string.Empty;
 
                     items.Add(s);
                 }
