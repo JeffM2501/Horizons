@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Launcher));
             this.WebContext = new System.Windows.Forms.WebBrowser();
             this.LogText = new System.Windows.Forms.TextBox();
             this.LaunchButton = new System.Windows.Forms.Button();
@@ -56,7 +57,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WebContext.Location = new System.Drawing.Point(225, 55);
-            this.WebContext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WebContext.Margin = new System.Windows.Forms.Padding(4);
             this.WebContext.MinimumSize = new System.Drawing.Size(27, 25);
             this.WebContext.Name = "WebContext";
             this.WebContext.Size = new System.Drawing.Size(824, 677);
@@ -69,7 +70,7 @@
             this.LogText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LogText.ForeColor = System.Drawing.Color.ForestGreen;
             this.LogText.Location = new System.Drawing.Point(225, 55);
-            this.LogText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LogText.Margin = new System.Windows.Forms.Padding(4);
             this.LogText.Multiline = true;
             this.LogText.Name = "LogText";
             this.LogText.ReadOnly = true;
@@ -83,7 +84,7 @@
             this.LaunchButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaunchButton.ForeColor = System.Drawing.Color.White;
             this.LaunchButton.Location = new System.Drawing.Point(16, 695);
-            this.LaunchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LaunchButton.Margin = new System.Windows.Forms.Padding(4);
             this.LaunchButton.Name = "LaunchButton";
             this.LaunchButton.Size = new System.Drawing.Size(187, 37);
             this.LaunchButton.TabIndex = 2;
@@ -98,7 +99,7 @@
             this.UpdateButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateButton.ForeColor = System.Drawing.Color.White;
             this.UpdateButton.Location = new System.Drawing.Point(16, 651);
-            this.UpdateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UpdateButton.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(187, 37);
             this.UpdateButton.TabIndex = 3;
@@ -125,7 +126,7 @@
             this.SettingsButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
             this.SettingsButton.Location = new System.Drawing.Point(16, 607);
-            this.SettingsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SettingsButton.Margin = new System.Windows.Forms.Padding(4);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(187, 37);
             this.SettingsButton.TabIndex = 5;
@@ -140,7 +141,7 @@
             this.NewsButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewsButton.ForeColor = System.Drawing.Color.White;
             this.NewsButton.Location = new System.Drawing.Point(25, 55);
-            this.NewsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NewsButton.Margin = new System.Windows.Forms.Padding(4);
             this.NewsButton.Name = "NewsButton";
             this.NewsButton.Size = new System.Drawing.Size(177, 37);
             this.NewsButton.TabIndex = 6;
@@ -155,7 +156,7 @@
             this.LogButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogButton.ForeColor = System.Drawing.Color.White;
             this.LogButton.Location = new System.Drawing.Point(25, 94);
-            this.LogButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LogButton.Margin = new System.Windows.Forms.Padding(4);
             this.LogButton.Name = "LogButton";
             this.LogButton.Size = new System.Drawing.Size(177, 37);
             this.LogButton.TabIndex = 7;
@@ -170,7 +171,7 @@
             this.CreditsButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreditsButton.ForeColor = System.Drawing.Color.White;
             this.CreditsButton.Location = new System.Drawing.Point(25, 132);
-            this.CreditsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CreditsButton.Margin = new System.Windows.Forms.Padding(4);
             this.CreditsButton.Name = "CreditsButton";
             this.CreditsButton.Size = new System.Drawing.Size(177, 37);
             this.CreditsButton.TabIndex = 8;
@@ -193,7 +194,7 @@
             this.ProgressPannel.Controls.Add(this.DownloadLabel1);
             this.ProgressPannel.Controls.Add(this.progressBar1);
             this.ProgressPannel.Location = new System.Drawing.Point(225, 570);
-            this.ProgressPannel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ProgressPannel.Margin = new System.Windows.Forms.Padding(4);
             this.ProgressPannel.Name = "ProgressPannel";
             this.ProgressPannel.Size = new System.Drawing.Size(824, 162);
             this.ProgressPannel.TabIndex = 9;
@@ -213,7 +214,7 @@
             // progressBar4
             // 
             this.progressBar4.Location = new System.Drawing.Point(4, 138);
-            this.progressBar4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar4.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(812, 12);
             this.progressBar4.TabIndex = 7;
@@ -233,7 +234,7 @@
             // progressBar3
             // 
             this.progressBar3.Location = new System.Drawing.Point(4, 102);
-            this.progressBar3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar3.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(812, 12);
             this.progressBar3.TabIndex = 5;
@@ -253,7 +254,7 @@
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(4, 66);
-            this.progressBar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar2.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(812, 12);
             this.progressBar2.TabIndex = 3;
@@ -273,7 +274,7 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(4, 31);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(812, 12);
             this.progressBar1.TabIndex = 1;
@@ -297,11 +298,11 @@
             this.Controls.Add(this.WebContext);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Launcher";
-            this.ShowIcon = false;
-            this.Text = "Starship Horizons Launcher";
+            this.Text = "Starship Horizons Launcher 1.2.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Launcher_FormClosing);
             this.Load += new System.EventHandler(this.Launcher_Load);
             this.ProgressPannel.ResumeLayout(false);
