@@ -208,6 +208,17 @@ namespace SHLanucher
         {
             FileSyncStarted?.Invoke(this, EventArgs.Empty);
 
+            var cfg = FilesToDownload.Find((x) => Path.GetFileName(x).ToLowerInvariant() == "config.xml");
+            if (cfg != null)    // push the config to the front so it gets downloaded first, so we can do settings ASAP
+            {
+                FilesToDownload.Remove(cfg);
+                FilesToDownload.Insert(0, cfg);
+            }
+
+            // TODO sort the world paths first, so settings can pick a world
+
+
+            // download what we gotta get
             for (int i =0; i < MaxDownloads; i++)
             {
                 FileDownloadInfo info = new FileDownloadInfo();

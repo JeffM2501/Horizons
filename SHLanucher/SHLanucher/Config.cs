@@ -25,7 +25,7 @@ namespace SHLanucher
         public class MusicInfo
         {
             public bool Enabled = true;
-            public float Volume = 0.4f;
+            public float Volume = 0.2f; // different from base default so that launcher music isn't too loud on start up.
         }
         public MusicInfo Music = new MusicInfo();
 

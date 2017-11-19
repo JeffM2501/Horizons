@@ -105,21 +105,30 @@ namespace SHLanucher.SettingsTabs
                 ScreenMode.SelectedIndex = Settings.Video.Borderless ? 2 : 1;
             
             DirectoryInfo worldsDir = new DirectoryInfo(Path.Combine(GameDir.FullName, "worlds"));
-            
-            int worldIndex = 0;
-            foreach (var w in worldsDir.GetDirectories())
+
+      
+            if (worldsDir.Exists)
             {
-                if (w.Name.ToLowerInvariant() != "horizons")
+                int worldIndex = 0;
+                foreach (var w in worldsDir.GetDirectories())
                 {
-                    WorldDropdown.Items.Add(w.Name);
-                    if (w.Name.ToLowerInvariant() == Settings.World.ToLowerInvariant())
-                        worldIndex = WorldDropdown.Items.Count - 1;
+                    if (w.Name.ToLowerInvariant() != "horizons")
+                    {
+                        WorldDropdown.Items.Add(w.Name);
+                        if (w.Name.ToLowerInvariant() == Settings.World.ToLowerInvariant())
+                            worldIndex = WorldDropdown.Items.Count - 1;
+                    }
                 }
+
+                WorldDropdown.SelectedIndex = worldIndex;
             }
-            
+            else
+            {
+                WorldDropdown.Enabled = false;
+            }
+
             ConsoleUpdateSpeed.Value = Settings.Websockets.Heartbeat;
             
-            WorldDropdown.SelectedIndex = worldIndex;
             
             DMXEnabled.Checked = Settings.DMX.Enabled;
             
