@@ -56,11 +56,10 @@
             this.WebContext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WebContext.Location = new System.Drawing.Point(225, 55);
-            this.WebContext.Margin = new System.Windows.Forms.Padding(4);
-            this.WebContext.MinimumSize = new System.Drawing.Size(27, 25);
+            this.WebContext.Location = new System.Drawing.Point(169, 45);
+            this.WebContext.MinimumSize = new System.Drawing.Size(20, 20);
             this.WebContext.Name = "WebContext";
-            this.WebContext.Size = new System.Drawing.Size(824, 677);
+            this.WebContext.Size = new System.Drawing.Size(618, 550);
             this.WebContext.TabIndex = 0;
             this.WebContext.Visible = false;
             // 
@@ -69,12 +68,11 @@
             this.LogText.BackColor = System.Drawing.Color.Black;
             this.LogText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.LogText.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LogText.Location = new System.Drawing.Point(225, 55);
-            this.LogText.Margin = new System.Windows.Forms.Padding(4);
+            this.LogText.Location = new System.Drawing.Point(169, 45);
             this.LogText.Multiline = true;
             this.LogText.Name = "LogText";
             this.LogText.ReadOnly = true;
-            this.LogText.Size = new System.Drawing.Size(824, 522);
+            this.LogText.Size = new System.Drawing.Size(618, 424);
             this.LogText.TabIndex = 1;
             // 
             // LaunchButton
@@ -83,10 +81,9 @@
             this.LaunchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LaunchButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaunchButton.ForeColor = System.Drawing.Color.White;
-            this.LaunchButton.Location = new System.Drawing.Point(16, 695);
-            this.LaunchButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LaunchButton.Location = new System.Drawing.Point(12, 565);
             this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(187, 37);
+            this.LaunchButton.Size = new System.Drawing.Size(140, 30);
             this.LaunchButton.TabIndex = 2;
             this.LaunchButton.Text = "LAUNCH";
             this.LaunchButton.UseVisualStyleBackColor = false;
@@ -98,10 +95,9 @@
             this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(16, 651);
-            this.UpdateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.UpdateButton.Location = new System.Drawing.Point(12, 529);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(187, 37);
+            this.UpdateButton.Size = new System.Drawing.Size(140, 30);
             this.UpdateButton.TabIndex = 3;
             this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
@@ -112,12 +108,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1000, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(750, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 16);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "v1.2.3";
+            this.label1.Text = "v1.4.1";
             // 
             // SettingsButton
             // 
@@ -125,10 +120,9 @@
             this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsButton.Location = new System.Drawing.Point(16, 607);
-            this.SettingsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SettingsButton.Location = new System.Drawing.Point(12, 493);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(187, 37);
+            this.SettingsButton.Size = new System.Drawing.Size(140, 30);
             this.SettingsButton.TabIndex = 5;
             this.SettingsButton.Text = "SETTINGS";
             this.SettingsButton.UseVisualStyleBackColor = false;
@@ -140,10 +134,9 @@
             this.NewsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewsButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewsButton.ForeColor = System.Drawing.Color.White;
-            this.NewsButton.Location = new System.Drawing.Point(25, 55);
-            this.NewsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.NewsButton.Location = new System.Drawing.Point(19, 45);
             this.NewsButton.Name = "NewsButton";
-            this.NewsButton.Size = new System.Drawing.Size(177, 37);
+            this.NewsButton.Size = new System.Drawing.Size(133, 30);
             this.NewsButton.TabIndex = 6;
             this.NewsButton.Text = "TRANSMISSIONS";
             this.NewsButton.UseVisualStyleBackColor = false;
@@ -155,10 +148,9 @@
             this.LogButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogButton.ForeColor = System.Drawing.Color.White;
-            this.LogButton.Location = new System.Drawing.Point(25, 94);
-            this.LogButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LogButton.Location = new System.Drawing.Point(19, 76);
             this.LogButton.Name = "LogButton";
-            this.LogButton.Size = new System.Drawing.Size(177, 37);
+            this.LogButton.Size = new System.Drawing.Size(133, 30);
             this.LogButton.TabIndex = 7;
             this.LogButton.Text = "LOG";
             this.LogButton.UseVisualStyleBackColor = false;
@@ -170,10 +162,9 @@
             this.CreditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreditsButton.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreditsButton.ForeColor = System.Drawing.Color.White;
-            this.CreditsButton.Location = new System.Drawing.Point(25, 132);
-            this.CreditsButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CreditsButton.Location = new System.Drawing.Point(19, 107);
             this.CreditsButton.Name = "CreditsButton";
-            this.CreditsButton.Size = new System.Drawing.Size(177, 37);
+            this.CreditsButton.Size = new System.Drawing.Size(133, 30);
             this.CreditsButton.TabIndex = 8;
             this.CreditsButton.Text = "CREDITS";
             this.CreditsButton.UseVisualStyleBackColor = false;
@@ -193,10 +184,9 @@
             this.ProgressPannel.Controls.Add(this.progressBar2);
             this.ProgressPannel.Controls.Add(this.DownloadLabel1);
             this.ProgressPannel.Controls.Add(this.progressBar1);
-            this.ProgressPannel.Location = new System.Drawing.Point(225, 570);
-            this.ProgressPannel.Margin = new System.Windows.Forms.Padding(4);
+            this.ProgressPannel.Location = new System.Drawing.Point(169, 463);
             this.ProgressPannel.Name = "ProgressPannel";
-            this.ProgressPannel.Size = new System.Drawing.Size(824, 162);
+            this.ProgressPannel.Size = new System.Drawing.Size(618, 132);
             this.ProgressPannel.TabIndex = 9;
             // 
             // DownloadLabel4
@@ -204,19 +194,17 @@
             this.DownloadLabel4.AutoSize = true;
             this.DownloadLabel4.BackColor = System.Drawing.Color.Transparent;
             this.DownloadLabel4.ForeColor = System.Drawing.Color.White;
-            this.DownloadLabel4.Location = new System.Drawing.Point(4, 118);
-            this.DownloadLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DownloadLabel4.Location = new System.Drawing.Point(3, 96);
             this.DownloadLabel4.Name = "DownloadLabel4";
-            this.DownloadLabel4.Size = new System.Drawing.Size(76, 16);
+            this.DownloadLabel4.Size = new System.Drawing.Size(61, 13);
             this.DownloadLabel4.TabIndex = 8;
             this.DownloadLabel4.Text = "Download4";
             // 
             // progressBar4
             // 
-            this.progressBar4.Location = new System.Drawing.Point(4, 138);
-            this.progressBar4.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar4.Location = new System.Drawing.Point(3, 112);
             this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(812, 12);
+            this.progressBar4.Size = new System.Drawing.Size(609, 10);
             this.progressBar4.TabIndex = 7;
             // 
             // DownloadLabel3
@@ -224,19 +212,17 @@
             this.DownloadLabel3.AutoSize = true;
             this.DownloadLabel3.BackColor = System.Drawing.Color.Transparent;
             this.DownloadLabel3.ForeColor = System.Drawing.Color.White;
-            this.DownloadLabel3.Location = new System.Drawing.Point(4, 82);
-            this.DownloadLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DownloadLabel3.Location = new System.Drawing.Point(3, 67);
             this.DownloadLabel3.Name = "DownloadLabel3";
-            this.DownloadLabel3.Size = new System.Drawing.Size(76, 16);
+            this.DownloadLabel3.Size = new System.Drawing.Size(61, 13);
             this.DownloadLabel3.TabIndex = 6;
             this.DownloadLabel3.Text = "Download3";
             // 
             // progressBar3
             // 
-            this.progressBar3.Location = new System.Drawing.Point(4, 102);
-            this.progressBar3.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar3.Location = new System.Drawing.Point(3, 83);
             this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(812, 12);
+            this.progressBar3.Size = new System.Drawing.Size(609, 10);
             this.progressBar3.TabIndex = 5;
             // 
             // DownloadLabel2
@@ -244,19 +230,17 @@
             this.DownloadLabel2.AutoSize = true;
             this.DownloadLabel2.BackColor = System.Drawing.Color.Transparent;
             this.DownloadLabel2.ForeColor = System.Drawing.Color.White;
-            this.DownloadLabel2.Location = new System.Drawing.Point(4, 47);
-            this.DownloadLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DownloadLabel2.Location = new System.Drawing.Point(3, 38);
             this.DownloadLabel2.Name = "DownloadLabel2";
-            this.DownloadLabel2.Size = new System.Drawing.Size(76, 16);
+            this.DownloadLabel2.Size = new System.Drawing.Size(61, 13);
             this.DownloadLabel2.TabIndex = 4;
             this.DownloadLabel2.Text = "Download2";
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(4, 66);
-            this.progressBar2.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar2.Location = new System.Drawing.Point(3, 54);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(812, 12);
+            this.progressBar2.Size = new System.Drawing.Size(609, 10);
             this.progressBar2.TabIndex = 3;
             // 
             // DownloadLabel1
@@ -264,28 +248,26 @@
             this.DownloadLabel1.AutoSize = true;
             this.DownloadLabel1.BackColor = System.Drawing.Color.Transparent;
             this.DownloadLabel1.ForeColor = System.Drawing.Color.White;
-            this.DownloadLabel1.Location = new System.Drawing.Point(4, 11);
-            this.DownloadLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DownloadLabel1.Location = new System.Drawing.Point(3, 9);
             this.DownloadLabel1.Name = "DownloadLabel1";
-            this.DownloadLabel1.Size = new System.Drawing.Size(76, 16);
+            this.DownloadLabel1.Size = new System.Drawing.Size(61, 13);
             this.DownloadLabel1.TabIndex = 2;
             this.DownloadLabel1.Text = "Download1";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(4, 31);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.progressBar1.Location = new System.Drawing.Point(3, 25);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(812, 12);
+            this.progressBar1.Size = new System.Drawing.Size(609, 10);
             this.progressBar1.TabIndex = 1;
             // 
             // Launcher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SHLanucher.Properties.Resources.LanucherBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1065, 747);
+            this.ClientSize = new System.Drawing.Size(799, 607);
             this.Controls.Add(this.ProgressPannel);
             this.Controls.Add(this.CreditsButton);
             this.Controls.Add(this.LogButton);
@@ -299,10 +281,9 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Launcher";
-            this.Text = "Starship Horizons Launcher 1.2.3";
+            this.Text = "Starship Horizons Launcher 1.4.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Launcher_FormClosing);
             this.Load += new System.EventHandler(this.Launcher_Load);
             this.ProgressPannel.ResumeLayout(false);
