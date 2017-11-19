@@ -74,7 +74,10 @@ namespace SHLanucher
         private void UpMan_FileDownloadCompleted(object sender, UpdateManager.FileProgressEventArgs e)
         {
            if (e.DownloadFileName == "config.xml")
+            {
+                CheckMusic();
                 SettingsButton.BeginInvoke(new Action(() => SettingsButton.Enabled = true));
+            }
         }
 
         private void UpMan_FileDownloadStarted(object sender, UpdateManager.FileProgressEventArgs e)
@@ -155,6 +158,25 @@ namespace SHLanucher
             PushLog("Update Started");
         }
 
+        bool MusicEnabled = false;
+        public float MusicParam = 0.4f;
+
+        void CheckMusic()
+        {
+            Config cfg = new Config();
+            if (HasSettings())
+                cfg = Config.LoadXML(GetSettingsFilePath());
+
+            MusicEnabled = cfg.Music.Enabled;
+            MusicParam = cfg.Music.Volume;
+
+            if (MusicEnabled && AudioOutputDevice.PlaybackState == PlaybackState.Stopped )
+                AudioOutputDevice.Play();
+            else if (!MusicEnabled && AudioOutputDevice.PlaybackState != PlaybackState.Stopped)
+                AudioOutputDevice.Stop();
+            AudioOutputDevice.Volume = MusicParam;
+        }
+
         private void Launcher_Load(object sender, EventArgs e)
         {
             DisableProgressBars();
@@ -166,8 +188,7 @@ namespace SHLanucher
 
             AudioOutputDevice.Init(BackgroundAudioFile);
 
-            AudioOutputDevice.Play();
-            AudioOutputDevice.Volume = 0.25f;
+            CheckMusic();
 
             SettingsButton.Enabled = HasSettings();
 
@@ -220,12 +241,14 @@ namespace SHLanucher
                         PushLog("Valid install detected, Launch when ready");
                         LaunchButton.Enabled = true;
                         SettingsButton.Enabled = true;
+                        CheckMusic();
                         NewsButton_Click(sender, e);
                     }
                     else
                     {
                         PushLog("Invalid install detected, forcing update");
                         SettingsButton.Enabled = HasSettings();
+                        CheckMusic();
                         UpdateButton_Click(sender, e);
                     }
                 }
@@ -417,7 +440,10 @@ namespace SHLanucher
             dlg.GameDir = GameDir;
 
             if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
                 dlg.Settings.SaveXML(GetSettingsFilePath());
+                CheckMusic();
+            }
 
             if (dlg.NeedLicenseValidate)
                 ValidateLicense();

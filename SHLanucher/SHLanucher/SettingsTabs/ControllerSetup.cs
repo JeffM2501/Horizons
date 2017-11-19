@@ -93,14 +93,15 @@ namespace SHLanucher.SettingsTabs
                 {
                     cfg.Key = ctl.Value;
                     cfg.Value = ctl.Command;
+                    Settings.StickMap.Add(cfg);
 
                 }
                 else
                 {
                     cfg.Value = ctl.Value;
                     cfg.Key = ctl.Command;
+                    Settings.ButtonMap.Add(cfg);
                 }
-                Settings.StickMap.Add(cfg);
             }
      
             return true;

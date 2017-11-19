@@ -45,7 +45,7 @@ namespace SHLanucher
 
         private void OK_Click(object sender, EventArgs e)
         {
-            if (!OptionsCTL.Confirm())
+            if (!OptionsCTL.Confirm() || !ControlerTab.Confirm())
                 DialogResult = DialogResult.Cancel;
         }
 

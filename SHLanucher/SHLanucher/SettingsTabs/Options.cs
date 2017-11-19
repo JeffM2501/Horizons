@@ -19,9 +19,14 @@ namespace SHLanucher.SettingsTabs
 
         public bool NeedLicenseValidate = false;
 
+        Color MusicNormalColor = Color.White;
+        Color MusicDisableColor = Color.DimGray;
+
         public Options()
         {
             InitializeComponent();
+
+            MusicNormalColor = VolumePercent.ForeColor;
         }
 
         public class ResolutionItem
@@ -95,7 +100,9 @@ namespace SHLanucher.SettingsTabs
 
             SelectResolution(Settings.Video.Size[0], Settings.Video.Size[1]);
 
-            Fullscreen.Checked = Settings.Video.Fullscreen;
+            ScreenMode.SelectedIndex = 0;
+            if (Settings.Video.Fullscreen)
+                ScreenMode.SelectedIndex = Settings.Video.Borderless ? 2 : 1;
             
             DirectoryInfo worldsDir = new DirectoryInfo(Path.Combine(GameDir.FullName, "worlds"));
             
@@ -122,11 +129,18 @@ namespace SHLanucher.SettingsTabs
                 DMXController.SelectedIndex = 2;
             else
                 DMXController.SelectedIndex = 0;
+
+            MusicEnabled.Checked = Settings.Music.Enabled;
+            MusicVolume.Value = (Decimal)((Settings.Music.Volume * 100));
+
+            CheckVolumeLabels();
+            CheckDMXLabels();
         }
 
         public bool Confirm()
         {
-            Settings.Video.Fullscreen = Fullscreen.Checked;
+            Settings.Video.Fullscreen = ScreenMode.SelectedIndex != 0;
+            Settings.Video.Borderless = ScreenMode.SelectedIndex == 2;
             
             ResolutionItem res = Resolutions.SelectedItem as ResolutionItem;
             if (res != null)
@@ -134,7 +148,10 @@ namespace SHLanucher.SettingsTabs
                 Settings.Video.Size[0] = res.X;
                 Settings.Video.Size[1] = res.Y;
             }
-            
+
+            Settings.Music.Enabled = MusicEnabled.Checked;
+            Settings.Music.Volume = ((float)MusicVolume.Value + 0.01f)  * 0.01f;
+
             Settings.World = WorldDropdown.SelectedItem.ToString();
             
             Settings.DMX.Enabled = DMXEnabled.Checked;
@@ -179,14 +196,21 @@ namespace SHLanucher.SettingsTabs
 
         }
 
+        void CheckDMXLabels()
+        {
+            DMXControllerLabel.ForeColor = DMXEnabled.Checked ? MusicNormalColor : MusicDisableColor;
+            DMXController.Enabled = DMXEnabled.Checked;
+        }
+
+
         private void DMXEnabled_CheckedChanged(object sender, EventArgs e)
         {
-
+            CheckDMXLabels();
         }
 
         private void DMXController_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void SetPCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -209,6 +233,19 @@ namespace SHLanucher.SettingsTabs
 
                 NeedLicenseValidate = true;
             }
+        }
+
+        void CheckVolumeLabels()
+        {
+            MusicVolumeLabel.ForeColor = MusicEnabled.Checked ? MusicNormalColor : MusicDisableColor;
+            VolumePercent.ForeColor = MusicEnabled.Checked ? MusicNormalColor : MusicDisableColor;
+            MusicVolume.Enabled = MusicEnabled.Checked;
+           
+        }
+
+        private void MusicEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckVolumeLabels();
         }
     }
 }

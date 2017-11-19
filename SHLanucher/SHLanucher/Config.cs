@@ -14,12 +14,20 @@ namespace SHLanucher
         public class VideoInfo
         {
             public bool Fullscreen = false;
+            public bool Borderless = false;
             public int[] Size = new int[] { 1280, 720 };
             public int TargetFPS = 60;
             public bool FixedFPS = false;
             public bool VSync = true;
         }
         public VideoInfo Video = new VideoInfo();
+
+        public class MusicInfo
+        {
+            public bool Enabled = true;
+            public float Volume = 0.4f;
+        }
+        public MusicInfo Music = new MusicInfo();
 
         public class VRInfo
         {
@@ -118,6 +126,7 @@ namespace SHLanucher
 
             Readers.Add("world", ReadWorld);
             Readers.Add("video", ReadVideo);
+            Readers.Add("music", ReadMusic);
             Readers.Add("vr", ReadVR);
             Readers.Add("component", ReadComponent);
             Readers.Add("dmx", ReadDMX);
@@ -184,6 +193,7 @@ namespace SHLanucher
             try
             {
                 bool.TryParse(node.Attributes["fullscreen"].InnerText, out cfg.Video.Fullscreen);
+                bool.TryParse(node.Attributes["borderless"].InnerText, out cfg.Video.Borderless);
                 int.TryParse(node.Attributes["targetfps"].InnerText, out cfg.Video.TargetFPS);
                 bool.TryParse(node.Attributes["fixedfps"].InnerText, out cfg.Video.FixedFPS);
                 bool.TryParse(node.Attributes["vsync"].InnerText, out cfg.Video.VSync);
@@ -194,6 +204,21 @@ namespace SHLanucher
                     int.TryParse(p[0], out cfg.Video.Size[0]);
                     int.TryParse(p[1], out cfg.Video.Size[1]);
                 }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool ReadMusic(string tag, XmlNode node, Config cfg)
+        {
+            try
+            {
+                bool.TryParse(node.Attributes["enabled"].InnerText, out cfg.Music.Enabled);
+                float.TryParse(node.Attributes["volume"].InnerText, out cfg.Music.Volume);
             }
             catch (Exception)
             {
@@ -436,10 +461,21 @@ namespace SHLanucher
             tw.WriteStartElement("video");
 
             tw.WriteAttributeString("fullscreen", Video.Fullscreen.ToString().ToLower());
+            tw.WriteAttributeString("borderless", Video.Borderless.ToString().ToLower());
             tw.WriteAttributeString("size", Video.Size[0].ToString() + " " + Video.Size[1].ToString());
             tw.WriteAttributeString("targetfps", Video.TargetFPS.ToString());
             tw.WriteAttributeString("fixedfps", Video.FixedFPS.ToString().ToLower());
             tw.WriteAttributeString("vsync", Video.VSync.ToString().ToLower());
+
+            tw.WriteEndElement();
+        }
+
+        private void WriteMusic(XmlTextWriter tw)
+        {
+            tw.WriteStartElement("music");
+
+            tw.WriteAttributeString("enabled", Music.Enabled.ToString().ToLower());
+            tw.WriteAttributeString("volume", Music.Volume.ToString().ToLower());
 
             tw.WriteEndElement();
         }
@@ -582,6 +618,7 @@ namespace SHLanucher
 
             WriteWorld(tw);
             WriteVideo(tw);
+            WriteMusic(tw);
             WriteVR(tw);
             WriteComponent(tw);
             WriteDMX(tw);

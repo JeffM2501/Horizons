@@ -13,7 +13,7 @@ namespace SHLanucher.SettingsTabs
         public static List<string> ButtonNames = new List<string>();
 
         public string Command = string.Empty;
-        public string Value { get {return InputItem != null ? InputItem.SelectedText : string.Empty; } }
+        public string Value { get {return InputItem != null ? InputItem.Text : string.Empty; } }
 
         public bool IsAxis = false;
         public StickCTL()
@@ -34,7 +34,7 @@ namespace SHLanucher.SettingsTabs
 
         public void Setup(string commandName, bool axis, string value)
         {
-            CommandLabel.Text = commandName;
+            Command = CommandLabel.Text = commandName;
             IsAxis = axis;
 
             CheckSticks();
@@ -76,7 +76,7 @@ namespace SHLanucher.SettingsTabs
             if (getter.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            InputItem.SelectedText = getter.ControlItem;
+            InputItem.Text = getter.ControlItem;
         }
     }
 }
