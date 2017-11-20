@@ -9,7 +9,11 @@ namespace SHLanucher
 {
     public class Config
     {
-        public string World = "Horizons";
+        public class WorldInfo
+        {
+            public string ID = "Horizons";
+        }
+        public WorldInfo World = new WorldInfo();
 
         public class VideoInfo
         {
@@ -178,7 +182,7 @@ namespace SHLanucher
         {
             try
             {
-                cfg.World = node.Attributes["id"].InnerText;
+                cfg.World.ID = node.Attributes["id"].InnerText;
             }
             catch (Exception)
             {
@@ -451,7 +455,7 @@ namespace SHLanucher
         {
             tw.WriteStartElement("world");
 
-            tw.WriteAttributeString("id", World);
+            tw.WriteAttributeString("id", World.ID);
 
             tw.WriteEndElement();
         }

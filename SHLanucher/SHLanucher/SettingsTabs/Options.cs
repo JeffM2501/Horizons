@@ -115,7 +115,7 @@ namespace SHLanucher.SettingsTabs
                     if (w.Name.ToLowerInvariant() != "horizons")
                     {
                         WorldDropdown.Items.Add(w.Name);
-                        if (w.Name.ToLowerInvariant() == Settings.World.ToLowerInvariant())
+                        if (w.Name.ToLowerInvariant() == Settings.World.ID.ToLowerInvariant())
                             worldIndex = WorldDropdown.Items.Count - 1;
                     }
                 }
@@ -161,7 +161,7 @@ namespace SHLanucher.SettingsTabs
             Settings.Music.Enabled = MusicEnabled.Checked;
             Settings.Music.Volume = ((float)MusicVolume.Value + 0.01f)  * 0.01f;
 
-            Settings.World = WorldDropdown.SelectedItem.ToString();
+            Settings.World.ID = WorldDropdown.SelectedItem.ToString();
             
             Settings.DMX.Enabled = DMXEnabled.Checked;
             
